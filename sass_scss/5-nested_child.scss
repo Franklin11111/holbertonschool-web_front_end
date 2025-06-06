@@ -1,9 +1,9 @@
 /* Nested child */
 $textGray: #3d3d3d;
 $textRed: #ff0000;
-body > {
+body {
   color: $textGray;
-  .red {
+  > .red {
     color: $textRed;
   }
 }
