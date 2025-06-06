@@ -1,0 +1,9 @@
+/* Nested hover */
+$textRed: #ff0000;
+$textGreen: #00ff00;
+button {
+  color: $textRed;
+  &:hover {
+    color: $textGreen;
+  }
+}
