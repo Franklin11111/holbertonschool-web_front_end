@@ -1,0 +1,11 @@
+/* mixin_margins */
+@mixin marginLR($marginLR: 10px) {
+  margin-left: $marginLR;
+  margin-right: $marginLR;
+}
+body {
+  @include marginLR;
+}
+div {
+  @include marginLR($marginLR: 15px);
+}
