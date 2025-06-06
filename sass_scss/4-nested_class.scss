@@ -1,0 +1,9 @@
+/* Nested classes */
+$textGray: #3d3d3d;
+$textRed: #ff0000;
+body {
+  color: $textGray;
+  .red {
+    color: $textRed;
+  }
+}
