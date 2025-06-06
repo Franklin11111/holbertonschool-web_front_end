@@ -1,0 +1,13 @@
+/* Nested and nested again */
+$textSize14: 14px;
+$textSize16: 16px;
+$textSize12: 12px;
+body {
+  font-size: $textSize14;
+  h1 {
+    font-size: $textSize16;
+  }
+  .smaller {
+    font-size: $textSize12;
+  }
+}
