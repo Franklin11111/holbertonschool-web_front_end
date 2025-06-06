@@ -1,0 +1,15 @@
+/* extend_list */
+%font-12 {
+  font-size: 12px;
+}
+.info {
+  @extend %font-12;
+}
+.success {
+  @extend %font-12;
+  color: #00ff00;
+}
+.warning {
+  @extend %font-12;
+  color: #ff0000;
+}
