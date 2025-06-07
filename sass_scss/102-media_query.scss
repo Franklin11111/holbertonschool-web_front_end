@@ -1,0 +1,21 @@
+/* media query 1 */
+$font20: 20px;
+$font18: 18px;
+$font16: 16px;
+$font14: 14px;
+$smallColor: #1d1d1d;
+h1 {
+  font-size: $font20;
+  @media screen and (max-width: 960px) {
+    font-size: $font18;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: $font16;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: $font14;
+    &.small {
+      color: #1d1d1d;
+    }
+  }
+}
