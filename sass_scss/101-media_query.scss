@@ -1,20 +1,9 @@
 /* media query 0 */
-/*
-$layout-breakpoint-small: 960px;
-
-@media (min-width: $layout-breakpoint-small) {
-  .hide-extra-small {
-    display: none;
-  }
-}
-*/
 $font20: 20px;
 $font14: 14px;
 h1 {
   font-size: $font20;
   @media (max-width: 320px) {
-    h1 {
-      font-size: $font14;
-    }
+    font-size: $font14;
   }
 }
