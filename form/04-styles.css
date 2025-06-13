@@ -853,6 +853,7 @@ textarea:focus {
   border: 0.1rem solid var(--color-grey);
   background-color: var(--color-light-grey);
 }
+
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 textarea::placeholder {
