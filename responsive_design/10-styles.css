@@ -542,6 +542,20 @@ ul.row {
   fill: var(--text-color);
 }
 
+@media screen and (max-width: 767px) {
+  :root {
+    --footer-padding: 5rem 2rem 1rem;
+  }
+  .footer .social.nav,
+  .footer .footer-nav {
+    text-align: center;
+  }
+  .footer .social.nav li + li,
+  .footer .footer-nav li + li {
+    padding-left: 2rem;
+  }
+}
+
 /*** 3. SECTION ***/
 
 /* Section (all styles)
@@ -625,6 +639,11 @@ ul.row {
   align-items: flex-start;
   justify-content: center;
   min-height: 35vh;
+}
+
+.article-page .section-hero {
+  margin-top: -8.5rem;
+  padding-top: 5rem;
 }
 
 @media screen and (max-width: 767px) {
