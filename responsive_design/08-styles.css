@@ -318,6 +318,18 @@ a:active {
   background: var(--color-white);
 }
 
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 57%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  html {
+    font-size: 60%;
+  }
+}
+
 /* Helpers
       ============================= */
 
@@ -614,6 +626,18 @@ ul.row {
   justify-content: center;
   min-height: 35vh;
 }
+
+@media screen and (max-width: 767px) {
+  .section-hero {
+    margin: -0.1rem 0;
+  }
+  .hero-homepage {
+    background-position: 85% 0;
+  }
+  .section-hero .section-body {
+    padding: 2rem;
+  }
+}
 /* Section Latest news
       ============================= */
 
@@ -712,6 +736,22 @@ ul.row {
 
 .card-work:hover .card-title {
   opacity: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .card-work .card-inner {
+    :root {
+      --text-color: var(--color-white);
+    }
+    color: var(--text-color);
+    position: relative;
+  }
+  .card-work .card-title {
+    opacity: 1;
+  }
+  .card-work .card-title a {
+    padding: 2rem 1rem 0 1rem;
+  }
 }
 
 /* Card SERVICES
@@ -1084,4 +1124,56 @@ textarea:valid:not(:placeholder-shown) {
   padding: 0;
   cursor: text;
   margin: 0 1rem;
+}
+/* menu btn */
+.header .menu-btn {
+  display: none;
+}
+.header .menu-btn:checked ~ .navbar-menu {
+  display: block;
+}
+.header .menu-btn:checked ~ .navbar-menu .nav {
+  max-height: 100%;
+  overflow: inherit;
+}
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+.header .menu-btn:checked ~ .menu-icon .navicon::before {
+  transform: rotate(-45deg);
+}
+.header .menu-btn:checked ~ .menu-icon .navicon::after {
+  transform: rotate(45deg);
+}
+.header .menu-btn:checked ~ .menu-icon .navicon::before,
+.header .menu-btn:checked ~ .menu-icon .navicon::after {
+  top: 0;
+}
+.header .menu-icon {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  :root {
+    --header-padding: 2rem 0 0;
+  }
+  .header {
+    background: var(--color-black);
+  }
+  .header-container {
+    flex-wrap: wrap;
+    padding: 0 1.5rem;
+  }
+  .header .menu-icon {
+    display: block;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header-logo {
+    flex-basis: 70%;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .header-logo {
+    flex-basis: 79%;
+  }
 }
