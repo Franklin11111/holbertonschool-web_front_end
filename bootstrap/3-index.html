@@ -31,11 +31,11 @@
     ></script>
   </head>
   <body>
-    <div>
+    <div class="container-lg p-5">
       <div class="row justify-content-center">
-        <div class="col-lg-3">
+        <div class="col-sm-4 mt-4">
           <div class="card">
-            <div>Coding</div>
+            <div class="card-header">Coding</div>
             <img
               src="https://dummyimage.com/450x200/a6a6a6/fff.png&text=450x200"
               class="card-img-top"
@@ -54,12 +54,12 @@
                 Play with
               </button>
             </div>
-            <div>40h</div>
+            <div class="card-footer">40h</div>
           </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-4 mt-4">
           <div class="card">
-            <div>Coding</div>
+            <div class="card-header">Coding</div>
             <img
               src="https://dummyimage.com/450x200/a6a6a6/fff.png&text=450x200"
               class="card-img-top"
@@ -79,12 +79,12 @@
                 Play with
               </button>
             </div>
-            <div>35h</div>
+            <div class="card-footer">35h</div>
           </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-sm-4 mt-4">
           <div class="card">
-            <div>Coding</div>
+            <div class="card-header">Coding</div>
             <img
               src="https://dummyimage.com/450x200/a6a6a6/fff.png&text=450x200"
               class="card-img-top"
@@ -99,11 +99,12 @@
                 data-toggle="modal"
                 data-target="#playModal"
                 class="btn btn-danger"
+                type="button"
               >
                 Play with
               </button>
             </div>
-            <div>70h</div>
+            <div class="card-footer">70h</div>
           </div>
         </div>
       </div>
@@ -112,20 +113,28 @@
     <!-- Modal -->
     <div
       id="playModal"
+      class="modal fade"
       tabindex="-1"
       role="dialog"
       aria-labelledby="playModal"
       aria-hidden="true"
     >
-      <div role="document">
-        <div>
-          <div>
-            <h5 id="exampleModalLabel">Play with CodePen</h5>
-            <button type="button" data-dismiss="modal" aria-label="Close">
+      <div role="document" class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Play with CodePen
+            </h5>
+            <button
+              class="btn btn-close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div>
+          <div class="modal-body">
             <p>
               CodePen is an online community for testing and showcasing
               user-created HTML, CSS and JavaScript code snippets. It functions
@@ -144,24 +153,30 @@
               330,000 registered users and 14.16 million monthly visitors.
             </p>
 
-            <form>
+            <form class="border-top pt-3">
               <div>
                 <h5>Connect</h5>
               </div>
-              <div>
-                <label for="username">Username</label>
-                <div>
-                  <input type="text" id="username" />
+              <div class="row mb-3">
+                <label for="username" class="col-2 col-form-label"
+                  >Username</label
+                >
+                <div class="col-10">
+                  <input type="text" id="username" class="form-control" />
                 </div>
               </div>
-              <div>
-                <label for="password">Password</label>
-                <div>
-                  <input type="password" id="password" />
+              <div class="row mb-3">
+                <label for="password" class="col-2 col-form-label"
+                  >Password</label
+                >
+                <div class="col-10">
+                  <input type="password" id="password" class="form-control" />
                 </div>
               </div>
-              <div>
-                <button type="submit">Connect</button>
+              <div class="row">
+                <button type="submit" class="btn btn-danger ml-auto mr-3">
+                  Connect
+                </button>
               </div>
             </form>
           </div>
