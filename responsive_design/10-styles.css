@@ -422,6 +422,10 @@ ul.row {
   margin: var(--nav-item-margin);
 }
 
+.nav .nav-item:last-child {
+  white-space: nowrap;
+}
+
 .nav .nav-link {
   display: block;
   padding: 0.5rem 0;
