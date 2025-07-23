@@ -10,8 +10,8 @@ function queryWikipedia(callback) {
     xhr.open('GET', url, true);
     xhr.onload = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let data = this.responseText;
-            callback(data);
+            let data = JSON.parse(this.responseText);
+            callback(data.query.pages[21721040].extract);
         }
     };
 
