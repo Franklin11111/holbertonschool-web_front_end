@@ -33,4 +33,4 @@ const boundProcessOrder =
 boundProcessOrder();
 boundProcessOrder();
 boundProcessOrder();
-console.log(stock);
+console.log(stock[userInput.toLowerCase()]);
