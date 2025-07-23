@@ -21,7 +21,7 @@ function processOrder(itemName, callbackPayment, callbackError) {
     console.log(`Verifying the stock of ${itemName}`);
     if (callbackError(itemName)) {
         callbackPayment(itemName);
-    } else { callbackError.bind(this, itemName) }
+    } else { callbackError(itemName) }
 }
 
 const userInput = prompt('Please enter the item you would like to purchase (Macbook, iPhone)')
