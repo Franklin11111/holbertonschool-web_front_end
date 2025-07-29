@@ -22,20 +22,14 @@
           $(
             `<tr><td>${firstName}</td><td>${lastName}</td><td>(x)</td></tr>`
           ).prependTo("tbody");
-          const lastTd = document.querySelector("tr td:last-child");
-          lastTd.style.backgroundColor = "orange";
-          $(lastTd).click(function () {
-            const elem = $(this);
-            elem.parent().remove();
-          });
         } else if (position === "after") {
           $("tbody").append(
             `<tr><td>${firstName}</td><td>${lastName}</td><td>(x)</td></tr>`
           );
         }
 
-        $("tr td:last").css("backgroundColor", "orange");
-        $("tr td:last").click(function () {
+        $("tr td:last-child").css("backgroundColor", "orange");
+        $("tr td:last-child").click(function () {
           const elem = $(this);
           elem.parent().remove();
         });
