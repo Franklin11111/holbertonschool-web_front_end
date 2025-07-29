@@ -17,11 +17,17 @@
           "<table><thead><tr><th>Firstname</th><th>Lastname</th></tr></thead><tbody></tbody></table>";
         $("body").append(tableEl);
       }
-      function addNewMember(firstName, lastName, position = "after") {
+      function addNewMember(firstName, lastName, position) {
         if (position === "before") {
-          $("tbody").prepend(
+          $(
             `<tr><td>${firstName}</td><td>${lastName}</td><td>(x)</td></tr>`
-          );
+          ).prependTo("tbody");
+          const lastTd = document.querySelector("tr td:last-child");
+          lastTd.style.backgroundColor = "orange";
+          $(lastTd).click(function () {
+            const elem = $(this);
+            elem.parent().remove();
+          });
         } else if (position === "after") {
           $("tbody").append(
             `<tr><td>${firstName}</td><td>${lastName}</td><td>(x)</td></tr>`
