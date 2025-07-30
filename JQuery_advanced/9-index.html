@@ -90,9 +90,16 @@
 
         pagli.on("click", function () {
           const newOffset = parseInt($(this).text());
-          $(this).css({
-            fontWeight: "bold",
-          });
+          if (newOffset === parseInt($(this).text())) {
+            $(this).css({
+              fontWeight: "bold",
+            });
+          } else {
+            $(this).css({
+              fontWeight: "normal",
+            });
+          }
+
           queryWikipedia($('input[type="text"]').val(), newOffset);
         });
       }
