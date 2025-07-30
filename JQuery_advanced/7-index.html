@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Task 0</title>
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="application/javascript">
+      function createSearchForm() {
+        const inputText = $('<input type="text">');
+        const inputSubmit = $('<input type="submit">');
+        $("body").append(inputText, inputSubmit, "<ul></ul>");
+        inputSubmit.click((e) => {
+          e.preventDefault();
+          queryWikipedia(inputText.val());
+        });
+      }
+
+      function addNewArticle(id, title, snippet) {
+        const listItem = $(`<li><p><span>id - ${id} </span><b>${title}</b></p>
+          <p>${snippet}</p></li>`);
+        $("ul").append(listItem);
+      }
+
+      function queryWikipedia(search) {
+        const dataObj = {
+          action: "query",
+          list: "search",
+          srsearch: search,
+          format: "json",
+        };
+        $.ajax({
+          url: "https://en.wikipedia.org/w/api.php",
+          data: dataObj,
+          type: "GET",
+          dataType: "jsonp",
+        })
+          .done((json) => {
+            const dataList = json.query.search;
+            dataList.forEach((data) => {
+              addNewArticle(data.pageid, data.title, data.snippet);
+            });
+          })
+          .fail((xhr, status, errorThrown) => {
+            console.log(`Error: ${errorThrown}`);
+            console.log(`Status: ${status}`);
+            console.dir(xhr);
+          })
+          .always((xhr, status) => {
+            alert("The request is complete");
+          });
+      }
+
+      createSearchForm();
+    </script>
+  </body>
+</html>
