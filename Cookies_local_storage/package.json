@@ -1,0 +1,17 @@
+{
+  "name": "cookies_local_storage",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Nail",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "webpack": "^5.101.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  }
+}

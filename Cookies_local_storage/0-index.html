@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer>
+      function setCookies() {
+        const fname = document.getElementById("firstname").value;
+        const email = document.querySelector("#email").value;
+        localStorage.setItem("firstname", fname);
+        localStorage.setItem("email", email);
+      }
+      function showCookies() {
+        const pEl = document.createElement("p");
+        pEl.innerHTML = `Cookies: ${localStorage.getItem(
+          "firstname"
+        )}, ${localStorage.getItem("email")}`;
+        document.body.appendChild(pEl);
+      }
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Login to the website</h1>
+    <input type="text" id="firstname" />
+    <input type="text" id="email" />
+    <button onclick="setCookies()">Log me in</button>
+    <h2>Cookies</h2>
+    <button onclick="showCookies()">Show the cookies</button>
+  </body>
+</html>
