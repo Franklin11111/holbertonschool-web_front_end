@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer>
+      function setCookies() {
+        const fname = document.getElementById("firstname").value;
+        const email = document.querySelector("#email").value;
+        const now = new Date();
+        now.setTime(now.getTime() + 10 * 24 * 60 * 60 * 1000);
+        document.cookie = `firstname=${fname};expires=${now.toUTCString()};path=/`;
+        document.cookie = `email=${email};expires=${now.toUTCString()};path=/`;
+        showWelcomeMessageOrForm();
+      }
+
+      function getCookie(name) {
+        let cname = name + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let carray = decodedCookie.split(";");
+        for (let i = 0; i < carray.length; i++) {
+          let c = carray[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(cname) == 0) {
+            return c.substring(cname.length, c.length);
+          }
+        }
+        return "";
+      }
+      function showForm() {
+        const form = document.querySelector(".form");
+        form.style.display = "block";
+      }
+
+      function hideForm() {
+        const form = document.querySelector(".form");
+        form.style.display = "none";
+      }
+
+      function deleteCookiesAndShowForm() {
+        const now = new Date();
+        now.setTime(now.getTime() - 10 * 24 * 60 * 60 * 1000);
+        const dayBefore = now.toUTCString();
+
+        document.cookie = `firstname=;expires=${now.toUTCString()};path=/`;
+        document.cookie = `email=;expires=${now.toUTCString()};path=/`;
+
+        const welMessage = document.querySelector(".welcomeMessage");
+        welMessage.style.display = "none";
+        showForm();
+      }
+
+      function showWelcomeMessageOrForm() {
+        if (getCookie("firstname")) {
+          hideForm();
+          const welcomeMessage = document.createElement("h1");
+          welcomeMessage.classList.add("welcomeMessage");
+          welcomeMessage.innerHTML = `Welcome ${getCookie(
+            "firstname"
+          )} <a style="font-weight: normal; font-size: 10px; font-style: italic;" href="#" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
+          document.body.appendChild(welcomeMessage);
+          const link = document.querySelector("a");
+        } else {
+          showForm();
+        }
+      }
+
+      function showCookies() {
+        const pEl = document.createElement("p");
+        pEl.innerHTML = `Email: ${getCookie("email")} - Firstname: ${getCookie(
+          "firstname"
+        )}`;
+        document.body.appendChild(pEl);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        showWelcomeMessageOrForm();
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form">
+      <h2>Login to the website</h2>
+      <input type="text" id="firstname" />
+      <input type="text" id="email" />
+      <button onclick="setCookies()">Log me in</button>
+    </div>
+
+    <h2>Cookies</h2>
+    <button onclick="showCookies()">Show the cookies</button>
+  </body>
+</html>
