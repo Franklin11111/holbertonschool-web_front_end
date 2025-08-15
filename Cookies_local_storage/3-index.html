@@ -48,7 +48,9 @@
         document.cookie = `email=;expires=${now.toUTCString()};path=/`;
 
         const welMessage = document.querySelector(".welcomeMessage");
-        welMessage.style.display = "none";
+        // welMessage.style.display = "none";
+        // welMessage.innerHTML = "";
+        welMessage.remove();
         showForm();
       }
 
@@ -59,9 +61,8 @@
           welcomeMessage.classList.add("welcomeMessage");
           welcomeMessage.innerHTML = `Welcome ${getCookie(
             "firstname"
-          )} <a style="font-weight: normal; font-size: 10px; font-style: italic;" href="#" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
+          )} <a style="font-weight: normal; font-size: 30px; font-style: italic;" href="#" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
           document.body.appendChild(welcomeMessage);
-          const link = document.querySelector("a");
         } else {
           showForm();
         }
