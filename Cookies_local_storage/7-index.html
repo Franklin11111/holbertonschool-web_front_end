@@ -48,9 +48,6 @@
           Object.keys(cart).forEach((key) => delete cart[key]);
           sessionStorage.setItem("cart", JSON.stringify(cart));
           displayCart();
-          const clearTx = document.querySelector(".clearText");
-          clearTx.remove();
-          document.querySelector(".cartHeading").innerHTML = "";
         }
 
         function createStore() {
