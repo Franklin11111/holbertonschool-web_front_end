@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+        if (typeof Storage == "undefined") {
+          alert(
+            "Sorry, your browser does not support Web storage. Try again with a better one"
+          );
+        } else {
+          createStore();
+          displayCart();
+        }
+        function getCartFromStorage() {
+          if (sessionStorage.getItem("cart")) {
+            const cartStr = sessionStorage.getItem("cart");
+            const cartObj = JSON.parse(cartStr);
+            return cartObj;
+          } else {
+            return {};
+          }
+        }
+
+        let cart = {};
+
+        function addItemToCart(item) {
+          if (cart[item] >= 1) {
+            cart[item] += 1;
+          } else {
+            cart[item] = 1;
+          }
+          sessionStorage.setItem("cart", JSON.stringify(cart));
+          displayCart();
+        }
+
+        function removeItemFromCart(item) {
+          if (cart[item]) {
+            delete cart[item];
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+          }
+          displayCart();
+        }
+
+        function clearCart() {
+          Object.keys(cart).forEach((key) => delete cart[key]);
+          sessionStorage.setItem("cart", JSON.stringify(cart));
+          displayCart();
+          const clearTx = document.querySelector(".clearText");
+          clearTx.remove();
+        }
+
+        function createStore() {
+          const h2El = document.createElement("h2");
+          h2El.innerHTML = "Available products: ";
+          document.body.appendChild(h2El);
+          const ulEl = document.createElement("ul");
+          document.body.appendChild(ulEl);
+          for (let i = 0; i < availableItems.length; i++) {
+            const liItem = document.createElement("li");
+            liItem.innerHTML = availableItems[i];
+            ulEl.append(liItem);
+            liItem.addEventListener("click", () => {
+              addItemToCart(availableItems[i]);
+            });
+          }
+        }
+
+        function displayCart() {
+          let h2El;
+          if (document.querySelector(".cartHeading")) {
+            const heading = document.querySelector(".cartHeading");
+            heading.remove();
+          } else {
+            h2El = document.createElement("h2");
+            h2El.innerHTML = "Your cart: ";
+            h2El.classList.add("cartHeading");
+            document.body.append(h2El);
+          }
+
+          if (document.querySelector("div")) {
+            const divEl = document.querySelector("div");
+            //divEl.innerHTML = ""; //remove()?
+            divEl.remove();
+          }
+          const newDiv = document.createElement("div");
+          document.body.appendChild(newDiv);
+          updateCart();
+        }
+
+        function updateCart() {
+          const divEl = document.querySelector("div");
+          const cart = getCartFromStorage();
+          if (Object.keys(cart).length === 0) {
+            const pEl = document.createElement("p");
+            pEl.innerHTML = "Your cart is empty";
+          } else {
+            const ulEl = document.createElement("ul");
+            divEl.append(ulEl);
+            for (const [key, value] of Object.entries(cart)) {
+              const liItem = document.createElement("li");
+              liItem.innerHTML = `${key} x ${value} <span>(remove)</span>`;
+              ulEl.append(liItem);
+              liItem.addEventListener("click", () => {
+                removeItemFromCart(key);
+              });
+            }
+            const clearText = document.createElement("p");
+            clearText.innerHTML = "Clear my cart";
+            clearText.classList.add("clearText");
+            divEl.prepend(clearText);
+            clearText.addEventListener("click", () => {
+              clearCart();
+            });
+          }
+        }
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
